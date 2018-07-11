@@ -41,7 +41,7 @@ podTemplate(
         }
         def repository
         stage ('Docker') {
-	    docker.withRegistry('docker.devopsinitiative.com', 'docker.devopsinitiative.com') {
+	    docker.withRegistry('https://docker.devopsinitiative.com', 'docker.devopsinitiative.com') {
                 def registryIp = "docker.devopsinitiative.com"
                 repository = "${registryIp}/hello"
                 docker.build("${repository}:${commitId}")
