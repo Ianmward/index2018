@@ -43,7 +43,7 @@ podTemplate(
         stage ('Docker') {
             container ('docker') {
                 def registryIp = "docker.devopsinitiative.com"
-                repository = "${registryIp}:80/hello"
+                repository = "${registryIp}/hello"
                 sh "docker build -t ${repository}:${commitId} ."
                 sh "docker push ${repository}:${commitId}"
             }
