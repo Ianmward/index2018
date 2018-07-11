@@ -41,11 +41,11 @@ podTemplate(
         }
         def repository
         stage ('Docker') {
-            container ('docker') {
+	    docker.withRegistry('docker.devopsinitiative.com', 'docker.devopsinitiative.com') {
                 def registryIp = "docker.devopsinitiative.com"
                 repository = "${registryIp}/hello"
-                sh "docker build -t ${repository}:${commitId} ."
-                sh "docker push ${repository}:${commitId}"
+                docker.build("${repository}:${commitId}")
+                docker.push()
             }
         }
         stage ('Deploy') {
