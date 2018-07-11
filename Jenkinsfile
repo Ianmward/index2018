@@ -43,7 +43,7 @@ podTemplate(
         stage ('Docker') {
 			container('docker') {
                 def registry = "docker.devopsinitiative.com"
-				sh "docker login -u jenkins -p Jenk1ns ${registry}"
+                sh "docker login -u jenkins -p Jenk1ns ${registry}"
                 repository = "${registry}/hello"
                 sh "docker build -t ${repository}:${commitId} ."
                 sh "docker push ${repository}:${commitId}"
