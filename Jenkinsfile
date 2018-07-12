@@ -51,8 +51,7 @@ podTemplate(
         }
         stage ('Deploy') {
             container ('helm') {
-                sh "helm list"
-                sh "helm version"
+                sh "ls"
                 sh "helm upgrade --install --wait --set image.repository=${repository},image.tag=${commitId} hello hello"
             }
         }
